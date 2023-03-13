@@ -50,31 +50,33 @@
             <button class="btn btn-secondary btn-filter" onclick="applyGreenFilter()">Green Filter</button>
             <button class="btn btn-secondary btn-filter" onclick="applyBlur()">Blur</button>
             <button class="btn btn-secondary btn-filter" onclick="applyInverse()">Inverse</button>
-            <button class="btn btn-secondary btn-filter" onclick="showOriginal()">Reset</button>
+            <button class="btn btn-secondary btn-filter" onclick="increaseBrightness()">Increase Brightness</button>
+            <button class="btn btn-secondary btn-filter" onclick="increaseContrast()">Increase Contrast</button>
+            <button class="btn btn-secondary btn-filter" onclick="duplicateImage()">Duplicate Image</button>
+        </div>
+        <div class="col-sm-12 text-center">
+          <button class="btn btn-secondary btn-filter" onclick="showOriginal()">Reset</button>
         </div>
     </div>
     </div>
     <script>
-      // Get query parameters
       const params = new URLSearchParams(window.location.search);
       const imgSrc = params.get('img');
       const caption = params.get('caption');
 
-      // Set image source and caption
+      
       const image = document.getElementById('image');
       image.src = imgSrc;
       const captionHeader = document.getElementById('caption');
       captionHeader.textContent = caption;
     </script>
 
-  <script>
+    <script>
         var originalImage;
-        
         window.onload = function() {
             originalImage = document.getElementById("image").src;
         }
-
-      function applyYellowFilter() {
+        function applyYellowFilter() {
             var img = document.getElementById("image");
             img.style.filter = "sepia(100%) saturate(5) hue-rotate(340deg)";
         }
@@ -82,17 +84,20 @@
             var img = document.getElementById("image");
             img.style.filter = "sepia(90%) saturate(5) hue-rotate(30deg)";
         }
-
-    function applyGrayScale() {
-        var img = document.getElementById("image");
-        img.style.filter = "grayscale(100%)";
-    }
-    function applyBlur() {
+        function increaseBrightness() {
+            var img = document.getElementById("image");
+            img.style.filter = "brightness(150%)";
+        }
+         function applyGrayScale() {
+            var img = document.getElementById("image");
+            img.style.filter = "grayscale(100%)";
+        }
+        function applyBlur() {
             var img = document.getElementById("image");
             img.style.filter = "blur(5px)";
         }
 
-    function showOriginal() {
+        function showOriginal() {
             var img = document.getElementById("image");
             img.src = originalImage;
             img.style.filter = "";
@@ -101,6 +106,10 @@
             var img = document.getElementById("image");
             img.style.filter = "invert(100%)";
         }
-</script>
+        function increaseContrast() {
+            var img = document.getElementById("image");
+            img.style.filter = "contrast(150%)";
+        }
+      </script>
   </body>
 </html>
